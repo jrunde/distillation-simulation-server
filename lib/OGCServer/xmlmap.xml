@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map srs="+proj=longlat" background-color="rgb(119,119,119)">
+    <Style name="countries">
+        <Rule>
+            <PolygonSymbolizer fill="rgb(51,0,153)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;19.1)</Filter>
+            <PolygonSymbolizer fill="rgb(255,5,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;21.2222)</Filter>
+            <PolygonSymbolizer fill="rgb(255,55,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;23.875)</Filter>
+            <PolygonSymbolizer fill="rgb(255,105,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;27.2857)</Filter>
+            <PolygonSymbolizer fill="rgb(255,155,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;31.8333)</Filter>
+            <PolygonSymbolizer fill="rgb(255,205,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;38.2)</Filter>
+            <PolygonSymbolizer fill="rgb(255,255,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;47.75)</Filter>
+            <PolygonSymbolizer fill="rgb(198,247,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;63.6667)</Filter>
+            <PolygonSymbolizer fill="rgb(142,239,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;95.5)</Filter>
+            <PolygonSymbolizer fill="rgb(86,231,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;191)</Filter>
+            <PolygonSymbolizer fill="rgb(30,224,0)"/>
+        </Rule>
+    </Style>
+    <Style name="text">
+        <Rule>
+            <TextSymbolizer dy="20" placement="point" avoid-edges="false" face-name="DejaVu Sans Book" halo-radius="1">[SOC]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Style name="text2">
+        <Rule>
+            <TextSymbolizer dy="-10" placement="point" avoid-edges="false" face-name="DejaVu Sans Book" halo-radius="1">[FARM]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Layer name="countries" srs="+proj=longlat">
+        <StyleName>countries</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="text" srs="+proj=longlat">
+        <StyleName>text</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="text2" srs="+proj=longlat">
+        <StyleName>text2</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+</Map>

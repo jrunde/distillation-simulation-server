@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script type="text/javascript"
+  		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<meta charset="utf-8">
+	<title>Fields of Fuel Help</title>
+	<link rel="stylesheet" type="text/css" href="./help.css">
+</head>
+
+<body>
+	<font face="Lucida Sans Unicode, Lucida Grande, sans-serif">
+		<aside class="sidebar" role="complementary">
+			<div class="wrapper">
+				<nav role="navigation">
+					<ul>
+						<li><a href="./summary.html" title="">Summary</a></li>
+   		 				<li><a href="./introduction.html" title="">Introduction</a></li>
+   	 					<li><a href="./objectives.html" title="">Objectives</a></li>
+    					<li><a href="./use.html" title="">Classroom Use</a></li>
+    					<li><a href="./setup.html" title="">Set-Up</a></li>
+	    				<li><a href="./gameplay.html" title="">Gameplay</a></li>
+    					<li><a href="./scoring.html" title="">Scoring</a></li>
+    					<li><a href="./tradeoffs.html" title="">Trade-Offs</a></li>
+    					<li><a href="./models.html" title="">Underlying Models</a></li>
+   		     	    </ul>
+				</nav>
+			</div>
+		</aside>
+		<div class="page-wrapper">
+			<a href="http://fieldsoffuel.discovery.wisc.edu"><img src="./FoF_logo.png" width="1072" height="168"/></a>
+		</div>
+		<h1>
+			Scoring
+		</h1>
+        <hr style="color:#304C6C;border-color:#1C2535;"/>
+        <p>
+        	There are four scores by which player performance can be assessed: environmental impact, energy production, economic performance, and overall sustainability. These scores are all normalized to reflect values between 0 and 100%, with higher scores reflecting better performance. Players are ranked by score in different categories, depending on what the predefined game objective is. Ranks are determined by comparing each players score in the different categories <i>over the duration of gameplay</i>.
+          	<br />
+    		<br />
+    		<h2>Environmental Impact:</h2>
+        	Currently the environmental score is a composite of the amount of soil carbon present on a farm combined with the farm's contribution to phosphorus runoff. Currently these two measures are equally weighted and used to calculate an overall environmental score which falls between 0 (poor) to 1 (optimal).
+    		<br />
+    		<ul>
+        		<li>Soil Carbon: Based on data extracted from the SSURGO database (dataset initially used for the construction of the DST), the maximum concentration of soil carbon on arable lands in Dane County (and generally applicable to the midwest) is 190 Mg/ha. In order to calculate the player's score, we use the mean carbon amount across all their fields (measured in Mg/ha) and divide that by the maximum achievable score of 190 MG/ha. This provides a value (<i>C<sub>score</sub></i>) that describes the proportion of maximum carbon storage utilized on the player's farm.</li>
+				<li>Phosphorus Runoff: The phosphorus score (<i>P<sub>score</sub></i>) is calculated as the proportion of the maximum possible phosphorus runoff produced by a farm. The landscape-level phosphorus model produces a measure of landscape-level phosphorus loading between 0.02239 and 0.2239 mg/L of phosphorus in the surface water. While this approximates a landscape-wide level of concentration, we can use the same model at the individual farm scale to provide a unitless score reflecting the farm's contribution. In this case we substitute the proportion of the total landscape planted in corn (<i>P<sub>corn</sub></i>) with the proportion of the player's fields which are planted in corn, producing a <i>P<sub>local</sub></i> value. This value is then normalized using:
+            		<br/>
+                	<br/>
+          			<math xmlns="http://www.w3.org/1998/Math/MathML">
+        				<mrow>
+            				<msub>
+            					<mi>P</mi>
+               					<mi mathvariant="italic">score</mi>
+               				</msub>
+           				</mrow>
+           				<mo>=</mo> 
+           				<mrow>
+           					<mn>1</mn>
+           					<mo>-</mo> 
+           					<mfrac>
+               					<mrow>
+                   					<msub>
+           								<mi>P</mi>
+               							<mi mathvariant="italic">local</mi>
+                					</msub>
+                    	    		<mo>-</mo>
+                    	    		<mn>0.0363</mn>
+        						</mrow>
+                   				<mn>0.1876</mn>
+                 			</mfrac>
+             			</mrow>
+            		</math>
+                    <br/>
+                	<br/>
+                    NOTE: this score is inverted to match the theme found in other scores where 1 generally reflects a desired outcome and zero undesirable.
+                </li>
+        	</ul>
+        	<br />
+        	<h2>Economic Score:</h2>
+        	This score relates how well an individual player is doing relative to the player with the greatest amount of capital.
+        	<br />
+        	<i>Economic Score = Player Capital / Capital of Player with the most Capital</i>
+            <br />
+        	<br />
+        	<h2>Energy Score:</h2>
+        	The energy score is determined by calculating the proportion of the maximum possible energy production achieved by the player.
+        	<ul>
+          		<li>based on the maximum soil carbon content of 190 Mg/ha and a 10% increase from fertilizer, the maximum biomass yield of corn is 16.7619 Mg/Ha</li>
+          		<li>50% of the corn biomass is considered kernel, and 50% stover
+            		<ul>
+              			<li>energy contribution from the kernel is calculated at 18800 MJ/kg from kernels, producing 157561.9 MJ/ha at maximum production</li>
+              			<li>we assume that 50% of the stover is left on site, and 50% (or 25% of the total biomass) goes to energy production, and produces 17700 MJ/kg, which equates to 74171.4 MJ/ha at maximum production</li>
+              			<li>summed together we have a maximum energy production (<i>E<sub>max</sub></i>) of 226088 MJ/ha</li>
+              			<li>note: 100% of grass biomass is used for energy production, but reaches a maximum of 226313 MJ/ha</li>
+              			<li>Energy score can therefore be calculated as: <i>(energy production per ha of player's farm) / E<sub>max</sub></i></li>
+            		</ul>
+          		</li>
+        	</ul>
+        </p>
+	</font>
+</body>
+</html>

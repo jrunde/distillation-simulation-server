@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script type="text/javascript"
+  		src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+	<meta charset="utf-8">
+	<title>Fields of Fuel Help</title>
+	<link rel="stylesheet" type="text/css" href="./help.css">
+</head>
+
+<body>
+	<font face="Lucida Sans Unicode, Lucida Grande, sans-serif">
+		<aside class="sidebar" role="complementary">
+			<div class="wrapper">
+				<nav role="navigation">
+					<ul>
+						<li><a href="./summary.html" title="">Summary</a></li>
+   		 				<li><a href="./introduction.html" title="">Introduction</a></li>
+   	 					<li><a href="./objectives.html" title="">Objectives</a></li>
+    					<li><a href="./use.html" title="">Classroom Use</a></li>
+    					<li><a href="./setup.html" title="">Set-Up</a></li>
+	    				<li><a href="./gameplay.html" title="">Gameplay</a></li>
+    					<li><a href="./scoring.html" title="">Scoring</a></li>
+    					<li><a href="./tradeoffs.html" title="">Trade-Offs</a></li>
+    					<li><a href="./models.html" title="">Underlying Models</a></li>
+   		     	    </ul>
+				</nav>
+			</div>
+		</aside>
+		<div class="page-wrapper">
+			<a href="http://fieldsoffuel.discovery.wisc.edu"><img src="./FoF_logo.png" width="1072" height="168"/></a>
+		</div>
+		<h1>
+			Underlying Models
+		</h1>
+        <hr style="color:#304C6C;border-color:#1C2535;"/>
+        <p>
+        	<h2>Soil Organic Carbon:</h2>
+			The amount of carbon in the soil (termed soil organic carbon, or <i>SOC</i>) is the most basic underlying currency that we currently using to incorporate higher order interactions between the many individual sub-models that determine game dynamics. Modeling the change in soil carbon from year to year is calculated using a function described in <a href="http://glbrc.wikispaces.com/file/view/Ogle%20et%20al%202003.pdf/403097158/Ogle%20et%20al%202003.pdf" onclick="ws.common.trackFileLink('/file/view/Ogle%20et%20al%202003.pdf/403097158/Ogle%20et%20al%202003.pdf');">Ogle et al. (2003)</a>, which uses crop choice and tillage decisions to determine the change in <i>SOC</i> from one year to the next.
+            <br />
+	 		<br />
+	  		The soil organic carbon at time <i>t</i> is calculated using the following formula, where each of the cropping and tillage options are binary variables:
+            <br />
+            <br />
+	  		<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    		<msub>
+	      			<mi mathvariant="italic">SOC</mi>
+	      			<mi>t</mi>
+        		</msub>
+	    		<mo>=</mo>
+	    		<msub>
+	      			<mi mathvariant="italic">SOC</mi>
+	      			<mrow>
+	        			<mi>t</mi>
+	        			<mo>-</mo>
+	        			<mn>1</mn>
+          			</mrow>
+        		</msub>
+	    		<mo>&#8901 <!-- multiply --></mo>
+	    		<mn>0.8</mn>
+	    		<mo>(</mo>
+	    		<mi mathvariant="italic">corn</mi>
+	    		<mo>)</mo>
+	    		<mo>&#8901 <!-- multiply --></mo>
+	    		<mn>1.17</mn>
+	    		<mo>(</mo>
+	    		<mi mathvariant="italic">grass</mi>
+	    		<mo>)</mo>
+	    		<mo>&#8901 <!-- multiply --></mo>
+	    		<mn>1.04</mn>
+	    		<mo>(</mo>
+	    		<mi mathvariant="italic">alfalfa</mi>
+	    		<mo>)</mo>
+	    		<mo>&#8901 <!-- multiply --></mo>
+	    		<mn>1.1</mn>
+	    		<mo>(</mo>
+	    		<mi mathvariant="italic">no-till</mi>
+	    		<mo>)</mo>
+    		</math>
+			<br/>
+            <br />
+	  		This equation is effectively unit-less, as it only describes the proportional change in <i>SOC</i>, but for the purpose of this project <i>SOC</i> is being measured in terms of Mg/ha.
+            <br />
+	  		<br />
+	  		Sigmoidal response of <i>SOC</i> function to keep it within bounds of min/max:
+            <br />
+	  		<ol>
+	  			<li>calculate base rate of change:
+                	<br />
+                    <br />
+	  				<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    				<mi>r</mi>
+	    				<mo>=</mo>
+	    				<mn>1</mn>
+        				<mo>+</mo>
+        				<mn>0.2</mn>
+        				<mo>(</mo>
+        				<mi mathvariant="italic">corn</mi>
+        				<mo>)</mo>
+        				<mo>+</mo>
+        				<mn>0.17</mn>
+        				<mo>(</mo>
+        				<mi mathvariant="italic">grass</mi>
+        				<mo>)</mo>
+        				<mo>+</mo>
+        				<mn>0.04</mn>
+        				<mo>(</mo>
+        				<mi mathvariant="italic">alfalfa</mi>
+        				<mo>)</mo>
+        				<mo>+</mo>
+        				<mn>0.1</mn>
+        				<mo>(</mo>
+        				<mi mathvariant="italic">no-till</mi>
+        				<mo>)</mo>
+        				<mo>-</mo>
+        				<mn>0.2</mn>
+        				<mo>(</mo>
+        				<mi mathvariant="italic">high-fert</mi>
+        				<mo>)</mo>
+    				</math>
+                    <br />
+                    <br />
+                </li>
+                <li>use base rate to calculate amount of change in <i>SOC</i>:
+                	<br />
+                    <br />
+	  				<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    				<mi>&#948 <!-- delta --></mi>
+	    				<mo>=</mo>
+        				<mfrac>
+        					<mrow>
+            					<mo>(</mo>
+                				<mi>r</mi>
+                				<mo>-</mo>
+                				<mn>1</mn>
+            					<mo>)</mo>
+            					<mo>(</mo>
+                				<mn>1</mn>
+                				<mo>-</mo>
+                				<mfrac>
+                					<msub>
+                 						<mi mathvariant="italic">SOC</mi>
+                       					<mrow>
+                       						<mi>t</mi>
+                           					<mo>-</mo>
+                           					<mn>1</mn>
+                      					</mrow>
+                    				</msub>
+                					<msub>
+                 						<mi mathvariant="italic">SOC</mi>
+                       					<mi mathvariant="italic">max</mi>
+                    				</msub>
+                				</mfrac>
+                				<mo>)</mo>
+            				</mrow>
+            				<mi mathvariant="italic">timestep</mi>
+        				</mfrac>
+        				<mo>&#8901 <!-- multiply --></mo>
+        				<msub>
+							<mi mathvariant="italic">SOC</mi>
+            				<mrow>
+               				<mi>t</mi>
+               				<mo>-</mo>
+               				<mn>1</mn>
+            				</mrow>
+        				</msub>
+    				</math>
+                    <br />
+                    <br />
+	  			</li>
+                <li>apply change to initial amount:
+                	<br />
+                    <br />
+					<math xmlns="http://www.w3.org/1998/Math/MathML">
+						<msub>
+							<mi mathvariant="italic">SOC</mi>
+            				<mi>t</mi>
+        				</msub>
+        				<mo>=</mo>
+        				<msub>
+							<mi mathvariant="italic">SOC</mi>
+            				<mrow>
+               				<mi>t</mi>
+               				<mo>-</mo>
+               				<mn>1</mn>
+           				</mrow>
+        				</msub>
+        				<mo>+</mo>
+        				<mi>&#948 <!-- delta --></mi>
+    				</math>
+                    <br />
+                    <br />
+	  			</li>
+            </ol>
+            <br />
+        	<h2>Yield:</h2>
+        	The yield of the different crops in this system is modeled largely as a function of existing <i>SOC</i>. A relationship between crop yield and <i>SOC</i> was developed using data for Dane County (WI) obtained from the SSURGO database. The <a href="http://glbrc.wikispaces.com/file/view/yield_carbon_model.r/408855898/yield_carbon_model.r" onclick="ws.common.trackFileLink('/file/view/yield_carbon_model.r/408855898/yield_carbon_model.r');">analysis</a> and associated <a href="http://glbrc.wikispaces.com/file/view/XYZData.csv/408855966/XYZData.csv" onclick="ws.common.trackFileLink('/file/view/XYZData.csv/408855966/XYZData.csv');">data file</a> are both available; the end result was the equation:
+            <br />
+        	<br />
+        	<br />
+        	<br />
+        	The total amount of above-ground biomass production can be visualized in the following graph:
+            <br />
+        	<table>
+          		<tbody>
+            		<tr>
+              			<td><img src="http://glbrc.wikispaces.com/file/view/yield_response.png/406937720/yield_response.png" alt="yield_response.png" title="yield_response.png" /></td>
+            		</tr>
+            		<tr>
+              			<td>Base response curve describing how soil carbon levels influence the total aboveground biomass yield for different crops</td>
+            		</tr>
+          		</tbody>
+        	</table>
+        	<br />
+        	Inclusion of additional terms in the model describes the effect of different management practices on yield; currently looking to obtain quantitative information on fertilizer application, tillage practices, and application of pesticides. Also need to include mechanism to incorporate increasing of yield of perennial crops over multiple years.
+            <br />
+            <br />
+	  		<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    		<msub>
+        			<mi mathvariant="italic">Yield</mi>
+        			<mi mathvariant="italic">crop</mi>
+        		</msub>
+        		<mo>=</mo>
+        		<msub>
+        			<mi>&#946 <!-- beta --></mi>
+        			<mn>0</mn>
+        		</msub>
+        		<mo>+</mo>
+        		<msub>
+        			<mi>&#946 <!-- beta --></mi>
+        			<mn>1</mn>
+        		</msub>
+        		<mi>log</mi>
+        		<mi mathvariant="italic">SOC</mi>
+        		<mo>&#8901 <!-- multiply --></mo>
+        		<msub>
+        			<mi>&#946 <!-- beta --></mi>
+        			<mn>2</mn>
+        		</msub>
+        		<mi mathvariant="italic">fert</mi>
+    		</math>
+            <br />
+            <br />
+        	<table>
+          		<tbody>
+            		<tr>
+              			<th height="38">Crop<br /></th>
+              			<th>&#946 <!-- beta --><sub>0</sub><br /></th>
+              			<th>&#946 <!-- beta --><sub>1</sub><br /></th>
+              			<th>&#946 <!-- beta --><sub>2</sub><br /></th>
+            		</tr>
+            		<tr>
+              			<th>Corn<br /></th>
+              			<td>0.1164<br /></td>
+              			<td>2.8849<br /></td>
+              			<td>1.1<br /></td>
+            		</tr>
+            		<tr>
+              			<th>Grass<br /></th>
+              			<td>-0.9556<br /></td>
+              			<td>2.4093<br /></td>
+              			<td>1.1<br /></td>
+            		</tr>
+            		<tr>
+            			<th>Alfalfa<br /></th>
+              			<td>-0.08196<br /></td>
+              			<td>2.40141<br /></td>
+              			<td>...<br /></td>
+            		</tr>
+          		</tbody>
+        	</table>
+        	<br />
+        	NOTE: Assumptions (guesses, really) have been made about the effects of tillage and fertilizer; the currently described implementation has no-till practices reducing the <i>SOC</i> loss by 10%, while having no effect on yield. High fertilization produces a 20% increase in <i>SOC</i> loss while producing a 10% increase in yield.<br />
+        	<br />
+        	<br />
+        	<h2>Phosphorous Levels:</h2>
+        	Phosphorus concentrations (mg/L) can be calculated by looking at the proportion of the landscape which is planted in corn, and calculated using the equation:
+            <br />
+            <br />
+	  		<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    		<mi>P</mi>
+        		<mo>=</mo>
+        		<msup>
+        			<mn>10</mn>
+            		<mrow>
+            			<mo>(</mo>
+            			<mn>0.79</mn>
+               			<msub>
+               				<mi>P</mi>
+                   			<mi mathvariant="italic">corn</mi>
+               			</msub>
+               			<mo>)</mo>
+               			<mo>(</mo>
+               			<mn>1</mn>
+               			<mo>-</mo>
+               			<mn>0.2</mn>
+               			<msub>
+               				<mi>P</mi>
+                   			<mi mathvariant="italic">no-till</mi>
+               			</msub>
+               			<mo>)</mo>
+               			<mo>-</mo>
+               			<mn>1.44</mn>
+            		</mrow>
+        		</msup>
+    		</math>
+            <br />
+        	<br />
+        	where <i>P<sub>no-till</sub></i> = the proportion of fields without tillage.
+            <br />
+        	<br />
+        	<br />
+        	<h2>Economic Model:</h2>
+        	Players' profits and Economy rank are determined by three factors: prices, yields, and costs. Each year's income is the sum of the per field profits:
+            <br />
+        	<br />
+	  		<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    		<msub>
+            		<mi>&#960 <!-- pi --></mi>
+        			<mi mathvariant="italic">field</mi>
+        		</msub>
+        		<mo>=</mo>
+        		<msub>
+           			<mi>P</mi>
+        			<mi mathvariant="italic">crop</mi>
+        		</msub>
+        		<msub>
+           			<mi>Y</mi>
+        			<mi mathvariant="italic">field</mi>
+        		</msub>
+        		<mo>-</mo>
+        		<msub>
+           			<mi>C</mi>
+        			<mi mathvariant="italic">field</mi>
+        		</msub>
+    		</math>
+            <br />
+        	<br />
+        	Yield:
+            <br />
+        	<br />
+        	Yield is a part of the agronomic model, details about which can be found earlier in this section.
+            <br />
+        	<br />
+        	Costs:
+            <br />
+        	<br />
+        	Per field costs are computed according to the following model:
+            <br />
+			<table>
+          		<tbody>
+            		<tr>
+              			<th width="142">Corn<br /></th>
+              			<th width="51"><br /></th>
+            		</tr>
+            		<tr>
+              			<td>First Year<br /></td>
+              			<td>873.10<br /></td>
+            		</tr>
+            		<tr>
+              			<td>Fertilizer (high)<br /></td>
+              			<td>255.93<br /></td>
+            		</tr>
+            		<tr>
+              			<td>Fertilizer (low)<br /></td>
+              			<td>127.96<br /></td>
+            		</tr>
+            		<tr>
+              			<td>Till (on)<br /></td>
+              			<td>44.48<br /></td>
+            		</tr>
+          		</tbody>
+        	</table>
+        	<br />
+        	<table>
+          		<tbody>
+            		<tr>
+              			<th>Switch Grass<br /></th>
+              			<th><br /></th>
+            		</tr>
+            		<tr>
+              			<td>First Year<br /></td>
+              			<td>605.69<br /></td>
+            		</tr>
+            		<tr>
+              			<td>Subsequent Years<br /></td>
+              			<td>377.84<br /></td>
+            		</tr>
+            		<tr>
+              			<td>Fertilizer (high)<br /></td>
+              			<td>71.66<br /></td>
+            		</tr>
+            		<tr>
+              			<td>Fertilizer (low)<br /></td>
+              			<td>0.00<br /></td>
+            		</tr>
+          		</tbody>
+        	</table>
+        	<br />
+        	These were derived from research done at ISU and USDA:
+            <br />
+        	<br />
+        	<a href="http://www.extension.iastate.edu/publications/ag200.pdf" rel="nofollow">http://www.extension.iastate.edu/publications/ag200.pdf</a>
+            <br />
+        	<a href="http://www.extension.iastate.edu/agdm/crops/pdf/a1-20.pdf" rel="nofollow">http://www.extension.iastate.edu/agdm/crops/pdf/a1-20.pdf</a>
+            <br />
+        	<a href="http://cropwatch.unl.edu/c/document_library/get_file?uuid=96b554d7-3154-4d6f-8d8a-c2732a232d55&amp;groupId=486254&amp;.pdf" rel="nofollow">http://cropwatch.unl.edu/c/document_library/get_file?uuid=96b554d7-3154-4d6f-8d8a-c2732a232d55&amp;groupId=486254&amp;.pdf</a>
+            <br />
+        	<br />
+        	Prices:
+            <br />
+        	<br />
+        	By default prices are fixed at $150 per ton for switchgrass and $250 for corn and do not change over the course of the game. The dynamic economy can be turned on by selecting the "Market-driven prices" option on the moderator screen, which will allow prices to change from year to year.
+            <br />
+        	<br />
+        	Prices are computed according to a simple model designed to represent the basic dynamics of supply and demand and to add an additional dimension for players to compete on. The market demands a certain amount of each crop, currently fixed at 60% of fields for corn and 40% for grass. This is matched with the number of tons of each crop supplied by the farmers, and prices are adjusted according the the discrepancy. The adjustment is dampened by a stickiness factor, currently fixed and 0.3, so prices will never change by more than 30% of their previous value in one year.
+            <br />
+        	<br />
+        	In the case of undersupply:
+	  		<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    		<msub>
+            		<mi>P</mi>
+        			<mrow>
+            			<mi>t</mi>
+                		<mo>+</mo>
+                		<mn>1</mn>
+            		</mrow>
+        		</msub>
+        		<mo>=</mo>
+        		<msub>
+            		<mi>P</mi>
+        			<mi>t</mi>
+       			</msub>
+        		<mo>+</mo>
+        		<mi>e</mi>
+        		<msub>
+            		<mi>P</mi>
+        			<mi>t</mi>
+        		</msub>
+        		<mo>(</mo>
+        		<mfrac>
+            		<msub>
+           				<mi>q</mi>
+        				<mi mathvariant="italic">demand</mi>
+        			</msub>
+        			<msub>
+            			<mi>q</mi>
+        				<mi mathvariant="italic">supply</mi>
+        			</msub>
+        		</mfrac>
+        		<mo>)</mo>
+    		</math>
+            <br />
+        	<br />
+        	In the case of oversupply:
+	  		<math xmlns="http://www.w3.org/1998/Math/MathML">
+	    		<msub>
+            		<mi>P</mi>
+        			<mrow>
+            			<mi>t</mi>
+                		<mo>+</mo>
+                		<mn>1</mn>
+            		</mrow>
+        		</msub>
+        		<mo>=</mo>
+        		<msub>
+            		<mi>P</mi>
+        			<mi>t</mi>
+        		</msub>
+        		<mo>-</mo>
+        		<mi>e</mi>
+        		<msub>
+            		<mi>P</mi>
+        			<mi>t</mi>
+        		</msub>
+        		<mo>(</mo>
+        		<mfrac>
+           			<msub>
+         				<mi>q</mi>
+        				<mi mathvariant="italic">supply</mi>
+        			</msub>
+        			<msub>
+            			<mi>q</mi>
+        				<mi mathvariant="italic">demand</mi>
+        			</msub>
+        		</mfrac>
+        		<mo>)</mo>
+    		</math>
+            <br />
+        	<br />
+        	Scoring:
+        	<br />
+        	<br />
+        	A player's economic score is based on their cumulative capital over the course of the entire game. The raw score, on a scale of 0 to 100, is simply the player's capital as a percent of the highest scoring player's capital, and ranks are determined by comparing players' economic scores.
+    	</p>
+	</font>
+</body>
+</html>

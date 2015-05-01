@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Fields of Fuel Help</title>
+	<link rel="stylesheet" type="text/css" href="./help.css">
+</head>
+
+<body>
+	<font face="Lucida Sans Unicode, Lucida Grande, sans-serif">
+		<aside class="sidebar" role="complementary">
+			<div class="wrapper">
+				<nav role="navigation">
+                    <!-- HTML for SEARCH BAR -->
+                    <div id="tfheader">
+                        <form id="key" method="search" action="../doc/search">
+                            <input type="text" class="textinput" name="search" size="21" maxlength="120"><input type="submit" value="search" class="button">
+                                </form>
+                        <div class="tfclear"></div>
+                    </div>
+                    <br />
+					<ul>
+                    	<li><a href="./home.html" title="">Home</a></li>
+						<li><a href="./summary.html" title="">About</a></li>
+   		 				<li><a href="./introduction.html" title="">Bioenergy Sustainability</a></li>
+    					<li><a href="./use.html" title="">Classroom Use</a></li>
+    					<li><a href="./setup.html" title="">Game Set-Up Instructions</a></li>
+	    				<li><a href="./gameplay.html" title="">Gameplay Instructions</a></li>
+                        <li><a href="./crops.html" title="">Crops and Management</a></li>
+    					<li><a href="./scoring.html" title="">Scoring and Models</a></li>
+    					<li><a href="" title="">Forum</a></li>
+    					<li><a href="./contact.html" title="">Contact Us</a></li>
+   		     	    </ul>
+				</nav>
+			</div>
+		</aside>
+		<div class="page-wrapper">
+			<a href="http://fieldsoffuel.discovery.wisc.edu"><img src="./FoF_logo.png" width="1072" height="168"/></a>
+		</div>
+		<h1>
+			Game Set-Up Instructions
+		</h1>
+        <hr style="color:#304C6C;border-color:#1C2535;"/>
+        <p>
+        	<h2>System Requirements:</h2>
+        	To run the game requires access to the internet and a modern up-to-date browser that permits communication via websockets. Typically we have had the most luck with updated versions of Chrome and Firefox, but the game does not currently work with Internet Explorer.
+        	<br />
+        	<br />
+        	<h2>Moderator Instructions:</h2>
+          The game is currently accessed through a landing page located at <a href="http://fieldsoffuel.discovery.wisc.edu/" target="_blank">http://fieldsoffuel.discovery.wisc.edu/</a>. The first step in setting up the game is that a moderator (typically the teacher) creates a game room for the students or other players to join. To do this, the moderator will click on the 'Moderate' link on the landing page, and a message box will pop up asking for a room name, password, and maximum number of players. Each new game requires a unique room name, which can be anything. The password is optional, but the maximum number of players must be set (note: you do not have to fill each player slot, but you cannot have more than the maximum specified). It is often best to write down the room name at this point. Once the room is created, a setup dialogue will appear, where the number of fields for each player and the level of complexity (contracts and management options) will be set. Once these decisions are made, you can click the button marked 'Apply Settings!' and the room will be created and ready for players to enter. It is often advantageous to leave this window open in order to access control during gameplay; the game begins in a paused state, and players cannot begin playing until the 'start' button is clicked on by the moderator. This feature was implemented to keep players from advancing the world before all of the other players had joined the game. Keeping this screen open also allows you to change the complexity level and pause the game during play. Currently, if the moderator page is closed it is not re-accessible. Gameplay can continue, but settings can no longer be changed, nor can the game be paused.
+            <br />
+        	<br />
+        	<h2>Global View:</h2>
+        	Once the game is set up, the moderator can return to the landing page (most easily accessed by opening an additional browser tab) to access the 'global' screen, which is typically projected in front of the group. To access this page, simply return to the landing page, click on 'watch', enter the room name, and click 'join game.' This will bring up a list of players and scores. Each player will have an indication as to their current status within the round (ready or not - often useful for identifying players that might accidentally be holding up the game), and their scoring in four different categories. The order of players can be adjusted based on their rank in any scoring category by clicking on the score name in the header. In addition, the prototype version currently allows you to double click on any player name to bring up their associated graph windows, allowing everyone to see their history and discuss their play choices. Multiple histories can be opened at the same time to compare strategies, but note that they will not update as gameplay continues. To update the windows simply close them and reopen by double-clicking on the player name again.
+            <br />
+        	<br />
+        	The global view also displays the current prices for corn and perennial grass after each round. In the default version of the game, the fixed price for corn is $250/ton and the price for switchgrass is $150/ton.
+            <br />
+        	<br />
+        	<h2>Player View:</h2>
+        	For players to join the game, they simply visit the landing page url, and click on 'Play'. They will then be prompted to enter a room name (as determined by the moderator previously) and a unique name. Once they enter their room, they will have immediate access to their fields, and their name will appear in the player list on the global page.
+            <br />
+            <br />
+            <!-- no longer needed as game begins in paused state - discussed above -->
+            <!-- NOTE: Players can begin playing as soon as they enter the world. Once all players currently in the world complete the first stage, the world will automatically advance. This creates a situation where the world may advance before all players have joined the world, and may miss out on the first turn. Currently, to remedy this, the moderator must instruct players not to end their first planting phase until instructed to do so (once all players have successfully joined the game). -->
+        </p>
+	</font>
+</body>
+</html>

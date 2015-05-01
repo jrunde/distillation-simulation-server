@@ -1,0 +1,111 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/* basic elements */
+body {
+	background-color: #FFF;
+	color: #1C2535;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif
+	font-size: 100%;
+	padding: 220px 50px 50px 325px;
+}
+
+p {
+	color: #1C2535;
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 100%;
+}
+
+h1 {
+	color: #1C2535;
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 200%;
+}
+
+h2 {
+	color: #1C2535;
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 120%;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+h3 {
+	color: #1C2535;
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+}
+
+a:link {
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #1C2535;
+	font-size: 100%;
+	text-decoration: none;
+}
+
+a:visited {
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #1C2535;
+	font-size: 100%;
+	text-decoration: none;
+}
+
+
+/* specific divs */
+.page-wrapper {
+	background-color: transparent;
+	padding: 35px 10px 10px 30px;  
+	margin: 0; 
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 175px;
+	width: 100%;
+}
+
+.sidebar {
+	margin-right: 600px; 
+	position: absolute; 
+	top: 0; 
+	left: 0;
+	height: 100%;
+}
+
+.sidebar .wrapper { 
+	font: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color: #1C2535; 
+	padding: 250px 25px 25px 40px;
+	margin-top: 0px;
+	height: 100%;
+	width: 250px;
+}
+
+.sidebar li {
+	line-height: 1.3em; 
+	display: block;
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 125%;
+	padding-top: 10px; 
+	margin-bottom: 10px;
+}
+
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+}
+	
+.sidebar li a:link {
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #EEE;
+	font-size: 125%;
+	text-decoration: none;
+}
+
+.sidebar li a:visited {
+	font:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #EEE;
+	font-size: 125%;
+	text-decoration: none;
+}

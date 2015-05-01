@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs" background-color="rgb(119,119,119)">
+    <Style name="GBI_area">
+        <Rule>
+            <PolygonSymbolizer fill="rgb(51,0,153)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;10.1)</Filter>
+            <PolygonSymbolizer fill="rgb(255,5,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;11.2222)</Filter>
+            <PolygonSymbolizer fill="rgb(255,55,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;12.625)</Filter>
+            <PolygonSymbolizer fill="rgb(255,105,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;14.4286)</Filter>
+            <PolygonSymbolizer fill="rgb(255,155,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;16.8333)</Filter>
+            <PolygonSymbolizer fill="rgb(255,205,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;20.2)</Filter>
+            <PolygonSymbolizer fill="rgb(255,255,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;25.25)</Filter>
+            <PolygonSymbolizer fill="rgb(198,247,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;33.6667)</Filter>
+            <PolygonSymbolizer fill="rgb(142,239,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;50.5)</Filter>
+            <PolygonSymbolizer fill="rgb(86,231,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([GBI]&gt;101)</Filter>
+            <PolygonSymbolizer fill="rgb(30,224,0)"/>
+        </Rule>
+    </Style>
+    <Style name="GBI_text">
+        <Rule>
+            <TextSymbolizer dy="10" placement="interior" avoid-edges="true" face-name="DejaVu Sans Book" halo-radius="1">[GBI]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Style name="SOC_area">
+        <Rule>
+            <PolygonSymbolizer fill="rgb(51,0,153)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;19.1)</Filter>
+            <PolygonSymbolizer fill="rgb(255,5,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;21.2222)</Filter>
+            <PolygonSymbolizer fill="rgb(255,55,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;23.875)</Filter>
+            <PolygonSymbolizer fill="rgb(255,105,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;27.2857)</Filter>
+            <PolygonSymbolizer fill="rgb(255,155,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;31.8333)</Filter>
+            <PolygonSymbolizer fill="rgb(255,205,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;38.2)</Filter>
+            <PolygonSymbolizer fill="rgb(255,255,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;47.75)</Filter>
+            <PolygonSymbolizer fill="rgb(198,247,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;63.6667)</Filter>
+            <PolygonSymbolizer fill="rgb(142,239,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;95.5)</Filter>
+            <PolygonSymbolizer fill="rgb(86,231,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([SOC]&gt;191)</Filter>
+            <PolygonSymbolizer fill="rgb(30,224,0)"/>
+        </Rule>
+    </Style>
+    <Style name="SOC_text">
+        <Rule>
+            <TextSymbolizer dy="10" placement="interior" avoid-edges="true" face-name="DejaVu Sans Book" halo-radius="1">[SOC]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Style name="crop_area">
+        <Rule>
+            <PolygonSymbolizer fill="rgb(51,0,153)"/>
+        </Rule>
+        <Rule>
+            <Filter>([CROP]=&apos;GRASS&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(46,92,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([CROP]=&apos;CORN&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(212,212,25)"/>
+        </Rule>
+        <Rule>
+            <Filter>([CROP]=&apos;COVER&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(0,66,163)"/>
+        </Rule>
+        <Rule>
+            <Filter>([CROP]=&apos;FALLOW&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(71,49,25)"/>
+        </Rule>
+    </Style>
+    <Style name="crop_text">
+        <Rule>
+            <TextSymbolizer dy="-10" avoid-edges="true" face-name="DejaVu Sans Book" halo-radius="1">[CROP]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Style name="farm_area">
+        <Rule>
+            <PolygonSymbolizer fill="rgb(51,0,153)"/>
+        </Rule>
+        <Rule>
+            <Filter>([FARM]=&apos;Go Farmer&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(86,231,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([FARM]=&apos;Bo Farmer&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(255,5,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([FARM]=&apos;Zoe Farmer&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(255,205,0)"/>
+        </Rule>
+        <Rule>
+            <Filter>([FARM]=&apos;Mo Farmer&apos;)</Filter>
+            <PolygonSymbolizer fill="rgb(255,105,0)"/>
+        </Rule>
+    </Style>
+    <Style name="farm_text">
+        <Rule>
+            <TextSymbolizer placement="interior" face-name="DejaVu Sans Book" halo-radius="1">[FARM]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Style name="farm_text_field">
+        <Rule>
+            <TextSymbolizer placement="interior" face-name="DejaVu Sans Book" halo-radius="1">[FARM]</TextSymbolizer>
+        </Rule>
+    </Style>
+    <Layer name="crop_area" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>crop_area</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="crop_text" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>crop_text</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="farm_area" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>farm_area</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_farms.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="farm_text" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>farm_text</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_farms_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="farm_text_field" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>farm_text_field</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="SOC_area" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>SOC_area</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="SOC_text" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>SOC_text</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="GBI_area" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>GBI_area</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+    <Layer name="GBI_text" srs="+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs">
+        <StyleName>GBI_text</StyleName>
+        <Datasource>
+            <Parameter name="file">public/map/noNameRoom_places_points.shp</Parameter>
+            <Parameter name="type">shape</Parameter>
+        </Datasource>
+    </Layer>
+</Map>
